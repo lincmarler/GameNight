@@ -1,9 +1,17 @@
+import { Player } from "./models/Players.js"
 import { Value } from "./models/Value.js"
 import { EventEmitter } from "./utils/EventEmitter.js"
 import { isValidProp } from "./utils/isValidProp.js"
 import { loadState } from "./utils/Store.js"
 
 class ObservableAppState extends EventEmitter {
+
+  players = [
+    new Player("Lincoln"),
+    new Player("Jason"),
+    new Player("Tyler")
+  ]
+
   page = ''
 
   /** @type {import('./models/Value.js').Value[]} */
@@ -11,7 +19,8 @@ class ObservableAppState extends EventEmitter {
 
   // NOTE Used to load initial data
   init() {
-
+    console.log(this.players)
+    this.players.forEach(p => p.greeting())
   }
 
 }
